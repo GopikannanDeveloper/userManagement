@@ -7,6 +7,8 @@ from common.Exceptions.custom_response import valid_response, valid_data_respons
 from rest_framework import status
 
 class UserLoginView(APIView):
+    def get(self, request):
+        return Response("GET Method")
     def post(self, request, *args, **kwargs):
         serializer = UserLoginSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():

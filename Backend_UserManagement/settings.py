@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Backend_UserManagement.urls'
@@ -133,3 +135,9 @@ AUTHENTICATION_BACKENDS = [
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'common.Exceptions.ExceptionHandler.handle_exception',
 }
+
+ALLOWED_HOSTS = ["*"]
+CORS_ALLOWED_ORIGINS = [
+    'http://*',
+    'https://*',
+]
