@@ -129,3 +129,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'common.backend.UserModelBackend',
 ]
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'common.Exceptions.ExceptionHandler.handle_exception',
+}
