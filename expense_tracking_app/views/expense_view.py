@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from expense_app.models import ExpenseModel
-from expense_app.serializers import ExpenseSerializer
+from expense_tracking_app.models import ExpenseModel
+from expense_tracking_app.serializers import ExpenseSerializer
 
 
 class ExpenseAPIView(APIView):

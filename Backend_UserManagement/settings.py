@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'user',
     'corsheaders',
     'common',
-    'expense_app',
+    'expense_tracking_app',
 ]
 
 MIDDLEWARE = [

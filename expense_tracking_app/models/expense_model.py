@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from user.models.user_model import CustomUser
-from expense_app.models.category_model import CategoryModel
+from expense_tracking_app.models.category_model import CategoryModel
 
 class ExpenseModel(models.Model):
     expense_id = models.AutoField(primary_key=True)

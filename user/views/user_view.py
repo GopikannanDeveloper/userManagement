@@ -20,13 +20,12 @@ class UserLoginView(APIView):
             return valid_response(detail=error, status_code=status.HTTP_400_BAD_REQUEST)
 
 class UserSignupView(APIView):
-    def get(self, request):
-        return Response("GET Method")
+    
     def post(self, request):
         serializer = UserSignupSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return valid_response(detail="Signup Successful", status_code=status.HTTP_200_OK)
+            return valid_response(detail="Signup Successful", status_code=status.HTTP_201_CREATED)
         else:
             error = [f"{field} {error}" for field, errors in serializer.errors.items() for error in errors][0]
             return valid_response(detail=error, status_code=status.HTTP_400_BAD_REQUEST)

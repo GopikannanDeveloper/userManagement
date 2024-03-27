@@ -5,22 +5,12 @@ def valid_data_response( **kwargs):
         statuscode = kwargs['status_code']
         response_data = {
             "statuscode": statuscode,
-             "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": True,
-                "Content-Type": "application/json"
-            },
             "body":{"data":kwargs['detail'] }
             }
     else:
         statuscode = 500
         response_data = {
             "statuscode": statuscode,
-             "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": True,
-                "Content-Type": "application/json"
-            },
             "body":{"message":'error occured' }
             }
 
@@ -32,22 +22,12 @@ def valid_response( **kwargs):
         statuscode = kwargs['status_code']
         response_data = {
             "statuscode": statuscode,
-             "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": True,
-                "Content-Type": "application/json"
-            },
             "body":{"message":kwargs['detail'] }
             }
     else:
         statuscode = 500
         response_data = {
             "statuscode": statuscode,
-             "headers": {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": True,
-                "Content-Type": "application/json"
-            },
             "body":{"message":'error occured' }
             }
 

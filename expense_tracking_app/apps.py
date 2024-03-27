@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class BillsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'expense_app'
+    name = 'expense_tracking_app'
