@@ -7,6 +7,3 @@ class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExpenseModel
         fields = '__all__'
-    
-    def create(self, validated_data):
-        return ExpenseModel.objects.create(**validated_data)

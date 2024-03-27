@@ -5,9 +5,12 @@ from expense_tracking_app.models import CategoryModel
 from expense_tracking_app.serializers import CategorySerializer
 from user.models.user_model import CustomUser
 from common.Exceptions.custom_response import valid_response, valid_data_response
+# from common.Authentication.token_validation import TokenAuthentication
 
 
 class CategoryAPIView(APIView):
+    # authentication_classes = [TokenAuthentication]
+
     def get(self, request, category_id=None):
         if category_id:
             try:
@@ -28,7 +31,7 @@ class CategoryAPIView(APIView):
         serializer = CategorySerializer(data=request.data)
         existing_category = CategoryModel.objects.filter(category_name=request.data['category_name'],created_user=user.userid) 
         if existing_category:
-            return valid_response(detail="Category already exists", status_code=status.HTTP_400_BAD_REQUEST)
+            return valid_response(detail="Category already exists", status_code=status.HTTP_409_CONFLICT)
 
         if serializer.is_valid():
             serializer.save()

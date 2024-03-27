@@ -4,8 +4,8 @@ from expense_tracking_app.views.expense_view import ExpenseAPIView
 
 
 urlpatterns = [
-    path('category/', CategoryAPIView.as_view(),name="login"),
-    path('category/<int:category_id>/', CategoryAPIView.as_view(), name='category-update'),
-    path('expense/', ExpenseAPIView.as_view(),name="signup"),
-    
+    path('category/', CategoryAPIView.as_view(),name="category"),
+    path('category/<int:category_id>/', CategoryAPIView.as_view(), name='category'),
+    path('expense/', ExpenseAPIView.as_view(),name="expense"),
+    path('expense/<int:expense_id>/', ExpenseAPIView.as_view(), name='expense'),
 ]
