@@ -1,7 +1,6 @@
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import UserManager
 from django.db import models
-import uuid
 
 class CustomUserManager(UserManager):
     def _create_user(self, email=None, password=None, **extra_fields):
@@ -33,13 +32,14 @@ class CustomUserManager(UserManager):
 
 
 class CustomUser(AbstractUser):
-    userid = models.UUIDField(primary_key=True, editable=False)
+    userid = models.AutoField(primary_key=True)
     email = models.EmailField(unique=True)
-    verified_user = models.BooleanField(default=False)
+    name = models.CharField(max_length=20)
+    password = models.CharField(max_length=15)
     user_active = models.BooleanField(default=False)
-    
     objects = CustomUserManager()
 
+    username = None
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    USERNAME_FIELD = "email"
     
