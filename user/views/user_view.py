@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from user.serializers.login_serializer import UserLoginSerializer 
 from user.serializers.signup_serializer import UserSignupSerializer 
-# from common.Authentication.token_generation import generate_jwt_token
+from common.Authentication.token_generation import generate_jwt_token
 from user.models.user_model import CustomUser
 from common.Exceptions.custom_response import valid_response, valid_data_response
 from rest_framework import status
