@@ -2,10 +2,23 @@ import django_filters
 from expense_tracking_app.models import ExpenseModel
 from datetime import datetime, timedelta
 from django.utils import timezone
+from django_filters import rest_framework as filters
+
+class CustomDateFilter(filters.DateFilter):
+    def filter(self, qs, value):
+        if value:
+            if self.lookup_expr == 'gte':
+                end_date = value + timedelta(days=30)
+                return qs.filter(**{f'{self.field_name}__range': (value, end_date)})
+            elif self.lookup_expr == 'lte':
+                start_date = value - timedelta(days=30)
+                value = value + timedelta(days=1)
+                return qs.filter(**{f'{self.field_name}__range': (start_date, value)})
+        return qs
 
 class ExpenseFilter(django_filters.FilterSet):
-    start_date = django_filters.DateFilter(field_name='created_at', lookup_expr='gte')
-    end_date = django_filters.DateFilter(field_name='created_at', lookup_expr='lte')
+    start_date = CustomDateFilter(field_name='created_at', lookup_expr='gte')
+    end_date = CustomDateFilter(field_name='created_at', lookup_expr='lte')
     today = django_filters.BooleanFilter(method='filter_today')
     this_week = django_filters.BooleanFilter(method='filter_this_week')
     this_month = django_filters.BooleanFilter(method='filter_this_month')
