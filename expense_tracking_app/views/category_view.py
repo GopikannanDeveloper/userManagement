@@ -22,7 +22,7 @@ class CategoryAPIView(APIView):
             except CategoryModel.DoesNotExist:
                 return valid_response(detail="Category not found", status_code=status.HTTP_404_NOT_FOUND)
         
-        categories = CategoryModel.objects.all()
+        categories = CategoryModel.objects.filter(created_user=authenticated_user)
         serializer = CategorySerializer(categories, many=True)
         return valid_data_response(detail=serializer.data, status_code=status.HTTP_200_OK)
 

@@ -18,7 +18,7 @@ class ExpenseAPIView(APIView):
             except ExpenseModel.DoesNotExist:
                 return valid_response(detail="Expense was not found", status_code=status.HTTP_404_NOT_FOUND)
         
-        categories = ExpenseModel.objects.all()
+        categories = ExpenseModel.objects.filter(created_user=authenticated_user)
         serializer = ExpenseSerializer(categories, many=True)
         return valid_data_response(detail=serializer.data, status_code=status.HTTP_200_OK)
 
